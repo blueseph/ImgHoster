@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "ImgHoster";
+}
+
+<div class="jumbotron">
+    <h1>ImgHoster</h1>
+    <p class="lead">ImgHoster is a quick & fast hosting platform for images on the internet.  No bells or whistles, just images for linking.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 form-group">
+        <h2>Upload an Image</h2>
+        
+        <form action="/Image/Upload" method="post" enctype="multipart/form-data">
+
+            <label for="file">Filename:</label>
+            <input type="file" accept=".png,.jpg,.gif,.bmp" name="file" id="file" />
+            <br/>
+            <input type="submit" name="Upload"/>
+        </form>
+        
+        <!--
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        -->
+    </div>
+</div>
