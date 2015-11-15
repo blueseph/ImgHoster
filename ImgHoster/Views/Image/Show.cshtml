@@ -5,11 +5,13 @@
 }
 
 <div class="row">
-    <div class="col-md-4 container-fluid" style="margin-top: 20px">
-        <img src="~/uploads/@Model.FileName" class="img-responsive"/>
-        <br/>
-        <div class="alert alert-info" style="margin-top: 10px">
+    <div class="col-md-12 container-fluid mtop-30">
+        <span class="alert alert-info">
             <a href="/images/@Model.EncodedName">http://imghoster.azurewebsites.net/images/@Model.EncodedName</a>
+        </span>
+        <br/>
+        <div class="mtop-30">
+            <img src="~/uploads/@Model.FileName" class="img-responsive" />
         </div>
     </div>
 </div>
