@@ -40,7 +40,7 @@ namespace ImgHoster.Controllers
                 return View("Error", new Error { Message = "There was a problem uploading your file, please try again later."});
 
             if (file.ContentLength > 3145728)
-                return View("Error", new Error {Message = "Sorry, file size cannot be over 3MB!"});
+                return View("Error", new Error { Message = "Sorry, file size cannot be over 3MB!"});
 
             //generate unique filename
             var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
@@ -51,15 +51,16 @@ namespace ImgHoster.Controllers
                 FileName = fileName,
                 FullServerPath = serverPath
             };
+
             try
             {
                 using (var context = new ImgHostContext())
                 {
-                    context.Images.AddOrUpdate(img);
+                    context.Images.Add(img);
                     context.SaveChanges();
                 }
             }
-            catch (DbEntityValidationException e)
+            catch (Exception e)
             {
                 return View("Error", new Error { Message = e.InnerException.Message });
             }
@@ -67,7 +68,6 @@ namespace ImgHoster.Controllers
             file.SaveAs(serverPath);
 
             //pass to /images/encodedname to display the image after upload
-            //return RedirectToRoute("ShowImageRoute", new { idString = img.EncodedName });
             return Redirect(string.Format("~/images/{0}", img.EncodedName));
         }
     }
